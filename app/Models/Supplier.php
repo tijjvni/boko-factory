@@ -14,5 +14,4 @@ class Supplier extends Model
     {
         return $this->morphOne(Person::class, 'personable');
     }
-
 }
