@@ -10,7 +10,8 @@ class Customer extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    public function contact()
+
+    public function person()
     {
         return $this->morphOne(Person::class, 'personable');
     }

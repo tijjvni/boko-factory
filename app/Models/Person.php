@@ -16,4 +16,8 @@ class Person extends Model
         return $this->morphTo();
     }
 
+    public function person()
+    {
+        return $this->hasMany(Contact::class, 'person_id');
+    } 
 }
