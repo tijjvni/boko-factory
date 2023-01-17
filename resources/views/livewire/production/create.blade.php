@@ -15,15 +15,17 @@
                 <legend class="m">Production Materials</legend>
 
                     @foreach($materialInputs as $key => $materialInput)
-                        <div class="grid grid-cols-2 gap-2 my-5">
-                            <div  class="col-span-1 ">
+                        <div class="grid grid-cols-2 my-5">
+                            <div  class="col-span-1">
                                 <x-jet-label for="name" value="{{ __('Materials') }}" class="mb-2"/>
-                                <select class="w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat outline-none border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"  wire:model="materials.{{$key}}.name">
-                                    <option value="1">Material 1</option>
-                                    <option value="2">Material 2</option>
-                                    <option value="3">Material 3</option>
+                                <select class="w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat outline-none border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"  wire:model="materials.{{$key}}.material">
+                                    <option value="0">Select material</option>
+                                    @foreach($materialOptions as $materialOption)
+                                        <option value="{{ $materialOption->id }}">{{ $materialOption->name }}</option>
+                                    @endforeach
                                 </select> 
-                                <x-jet-input-error for="materials.{{$key}}.name" class="mt-2" />
+                                <span class="text-indigo-600 text-xs">Add material</span>
+                                <x-jet-input-error for="materials.{{$key}}.material" class="mt-2" />
                             </div>                            
                             <div  class="col-span-1 ">
                                 <x-jet-label for="name" value="{{ __('Quantity') }}" class="mb-2"/>
@@ -35,7 +37,7 @@
 
 
                     <div class="flex space-x-2 my-2">
-                      <button type="button" class="inline-block px-6 py-2.5 text-gray-600 shadow font-medium text-xs leading-tight uppercase rounded shadow-lg">
+                      <button type="button" class="inline-block px-6 py-2.5 text-gray-600 shadow font-medium text-xs leading-tight uppercase rounded shadow-lg" wire:click="addNewMaterialInput()">
                         <i class="fa fa-plus"></i>
                         </button>
                     </div>
@@ -44,15 +46,15 @@
 
             <div class="col-span-6 ">
                 <div class="w-full form-check">
-                  <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-indigo-600 checked:border-indigo-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckChecked" wire:model="productionStarts" checked/>
+                  <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-indigo-600 checked:border-indigo-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckChecked" wire:model="startNow" checked/>
                   <label class="form-check-label inline-block text-gray-600" for="flexCheckChecked">
                     Production starts now
                   </label>
                 </div>
-                @if(!$productionStarts)
+                @if(!$startNow)
                     <div  class="w-full ">
-                        <x-jet-label for="name" value="{{ __('Time') }}" class="mb-2"/>
-                        <x-jet-input id="name" type="datetime-local" class="col-span-1 block w-full" wire:model="start_time" placeholder="1" />
+                        <x-jet-label for="time" value="{{ __('Time') }}" class="mb-2"/>
+                        <x-jet-input id="time" type="datetime-local" class="col-span-1 block w-full" wire:model="start_time" placeholder="1" />
                         <x-jet-input-error for="start_time" class="mt-2" />
                     </div>  
                 @endif              

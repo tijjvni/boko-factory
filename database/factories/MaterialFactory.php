@@ -4,9 +4,8 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Material>
- */
+use App\Models\MaterialType;
+
 class MaterialFactory extends Factory
 {
     /**
@@ -17,7 +16,8 @@ class MaterialFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "name" => $this->faker->word,
+            "type_id" => MaterialType::factory()->create()->id
         ];
     }
 }

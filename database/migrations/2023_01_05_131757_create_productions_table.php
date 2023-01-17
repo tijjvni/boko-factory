@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('productions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->boolean('is_closed')->default(false);
+            $table->enum('status', ['ongoing', 'completed'])->default('ongoing');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });

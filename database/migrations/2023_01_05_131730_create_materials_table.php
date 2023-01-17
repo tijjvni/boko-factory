@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->unsignedBigInteger('type_id');
+            $table->foreign('type_id')->references('id')->on('material_types');
             $table->timestamps();
         });
     }

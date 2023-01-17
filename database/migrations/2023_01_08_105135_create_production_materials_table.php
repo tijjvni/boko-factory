@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('material_id');
             $table->foreign('material_id')->references('id')->on('materials');
             $table->foreign('production_id')->references('id')->on('productions');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
