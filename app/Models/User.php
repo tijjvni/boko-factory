@@ -65,4 +65,14 @@ class User extends Authenticatable
         return $this->hasMany(Production::class, 'user_id');
     }
 
+    public function materialTypes()
+    {
+        return $this->hasMany(MaterialType::class, 'user_id');
+    }
+
+    public function productTypes()
+    {
+        return $this->hasMany(ProductType::class, 'user_id');
+    }
+
 }

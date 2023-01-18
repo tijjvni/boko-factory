@@ -13,6 +13,7 @@
             <!-- Name -->
             <fieldset class="col-span-6 rounded shadow-md p-5 pt-2">
                 <legend class="m">Production Materials</legend>
+                <p class="text-indigo-600 text-xs">Add material</p>
 
                     @foreach($materialInputs as $key => $materialInput)
                         <div class="grid grid-cols-2 my-5">
@@ -24,7 +25,6 @@
                                         <option value="{{ $materialOption->id }}">{{ $materialOption->name }}</option>
                                     @endforeach
                                 </select> 
-                                <span class="text-indigo-600 text-xs">Add material</span>
                                 <x-jet-input-error for="materials.{{$key}}.material" class="mt-2" />
                             </div>                            
                             <div  class="col-span-1 ">

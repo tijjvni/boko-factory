@@ -4,10 +4,10 @@ namespace App\Http\Livewire\Config;
 
 use Livewire\Component;
 
-class ProductManagement extends Component
+class Configuration extends Component
 {
     public function render()
     {
-        return view('livewire.config.product-management');
+        return view('livewire.config.configuration');
     }
 }

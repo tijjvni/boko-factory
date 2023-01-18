@@ -14,5 +14,10 @@ class MaterialType extends Model
     public function material()
     {
         return $this->hasMany(MaterialType::class, 'material_id');
+    } 
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }  
 }

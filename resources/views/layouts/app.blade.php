@@ -49,10 +49,8 @@
 
         @livewireScripts
 
-        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js" defer></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
         <x-livewire-alert::scripts />
-        
     </body>
 </html>

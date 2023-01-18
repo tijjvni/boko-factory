@@ -45,7 +45,26 @@ Route::middleware([
     Route::get('/store', function () {
         return view('store');
     })->name('store');
-    Route::get('/config', function () {
-        return view('config');
-    })->name('config');
+    
+    Route::prefix('/config')->group(function(){
+        Route::get('/', function () {
+            return view('config');
+        })->name('config');
+
+        Route::get('/config-production-products', function () {
+            return view('config');
+        })->name('config.production.products');
+        Route::get('/config-production-products-categories', function () {
+            return view('config');
+        })->name('config.production.products.categories');
+        Route::get('/config-production-materials', function () {
+            return view('config');
+        })->name('config.production.materials');
+        Route::get('/config-production-material-types', function () {
+            return view('config');
+        })->name('config.production.materials.types');
+
+
+
+    });
 });
