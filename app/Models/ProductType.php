@@ -14,5 +14,9 @@ class ProductType extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }  
-    
+
+    public function product()
+    {
+        return $this->hasMany(ProductType::class, 'product_id');
+    } 
 }
