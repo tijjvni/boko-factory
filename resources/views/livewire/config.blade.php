@@ -13,6 +13,15 @@
                 @case(route('config.production.materials.types'))
                       <livewire:config.production.material-type />                      
                    @break
+                @case(route('config.users.customers'))
+                      <livewire:config.users.all-customers />                      
+                    @break
+                @case(route('config.users.suppliers'))
+                      <livewire:config.users.all-suppliers />                      
+                    @break
+                @case(route('config.users.add.customers'))
+                      <livewire:config.users.add-customer />                      
+                    @break                   
                 @default
                 
 

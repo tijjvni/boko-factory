@@ -1,4 +1,14 @@
 <div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+        <x-dashboard-stat-card title="Customers" value="25" info="all"/>
+        <x-dashboard-stat-card title="Customers" value="8" info="Placed Order"/>
+    </div>
+
+    <div class="flex">
+        <a class="ml-3 sm:block" href="{{route('config.users.add.customers')}}">
+            <x-button value="New customer"/>
+        </a>
+    </div>
 
     <div class="flex flex-col">
       <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -11,16 +21,16 @@
                     #
                   </th>
                   <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                    Sales
+                    Customer
                   </th>
                   <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                    Amount
+                    Contact
+                  </th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+                    Orders
                   </th>
                   <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
                     Status
-                  </th>
-                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                    By
                   </th>
                 </tr>
               </thead class="border-b">
