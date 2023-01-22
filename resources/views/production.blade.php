@@ -32,23 +32,9 @@
                     </nav>
                     @break
                 @default
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
-                        <x-dashboard-stat-card title="Production" value="0" info="ongoing">
-                            <i class="fa fa-tools"></i>
-                        </x-dashboard-stat-card>
-                        <x-dashboard-stat-card title="Materials" value="4" info="running low" class="bg-yellow-5000">
-                            <i class="fa fa-list"></i>
-                        </x-dashboard-stat-card>
-                        <x-dashboard-stat-card title="Orders" value="7" info="pending">
-                            <i class="fa fa-archive"></i>
-                        </x-dashboard-stat-card>
-                    </div>                
+               
            @endswitch
-
-<!-- 
-            <div class="mb-5">
-                <x-jet-banner />                
-            </div> -->
+           
 
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 @switch(request()->url())

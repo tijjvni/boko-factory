@@ -4,9 +4,9 @@ namespace App\Http\Livewire\Config\Users;
 
 use Livewire\Component;
 
-use App\Models\Customer;
+use App\Models\Supplier;
 
-class AddCustomer extends Component
+class AddSuppliers extends Component
 {
 
     public $firstname;
@@ -23,30 +23,32 @@ class AddCustomer extends Component
         'email' => 'required|email',
     ];
 
-    public function addCustomer()
+    public function addSupplier()
     {
         $this->validate();
         
-        $customer = new Customer;
-        $customer->save();
-        $customer->person()->create([
+        $supplier = new Supplier;
+        $supplier->save();
+        $supplier->person()->create([
             'first_name' => $this->firstname,
             'last_name' => $this->lastname,
-            'personable_type' => 'customer',
-            'personable_id' => $customer->id
+            'personable_type' => 'supplier',
+            'personable_id' => $supplier->id
         ]);
+        // dd($supplier->person);
 
-        $customer->person->contact()->create([
+        $supplier->person->contact()->create([
             'phone' => $this->phone,
             'email' => $this->email,
             'address' => $this->address,
-            'person_id' => $customer->person->id,
+            'person_id' => $supplier->person->id,
         ]);
 
-        return redirect()->to(route('config.users.customers'));
+        return redirect()->to(route('config.users.suppliers'));
     }
+
     public function render()
     {
-        return view('livewire.config.users.add-customer');
+        return view('livewire.config.users.add-suppliers');
     }
 }

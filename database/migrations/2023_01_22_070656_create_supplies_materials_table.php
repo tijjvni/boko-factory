@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('supplies_materials', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('msl');
-            $table->integer('quantity');
-            $table->unsignedBigInteger('type_id');
-            $table->foreign('type_id')->references('id')->on('product_types');
+            $table->integer('quantity'); 
+            $table->unsignedBigInteger('supplier_id');
+            $table->foreign('supplier_id')->references('id')->on('suppliers'); 
+            $table->unsignedBigInteger('material_id');
+            $table->foreign('material_id')->references('id')->on('materials');           
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('supplies_materials');
     }
 };

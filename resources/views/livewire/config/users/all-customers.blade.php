@@ -1,7 +1,7 @@
 <div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
-        <x-dashboard-stat-card title="Customers" value="25" info="all"/>
-        <x-dashboard-stat-card title="Customers" value="8" info="Placed Order"/>
+        <x-dashboard-stat-card title="Customers" value="{{$allCustomers}}" info="all"/>
+        <x-dashboard-stat-card title="Customers" value="{{$allCustomersWithOrders}}" info="Placed Order"/>
     </div>
 
     <div class="flex">
@@ -9,6 +9,7 @@
             <x-button value="New customer"/>
         </a>
     </div>
+
 
     <div class="flex flex-col">
       <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -35,26 +36,29 @@
                 </tr>
               </thead class="border-b">
               <tbody>
-                @for($x=0;$x<5;$x++)
+                @foreach($customers as $key => $customer)
                     <tr class="bg-white border-b">
-                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$x+1}}</td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        <!-- <a href="/production/1"></a> -->
-                        SL{{ str_pad($x, 5, "0", STR_PAD_LEFT) }}
+                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        CST{{ str_pad($customer->id, 5, "0", STR_PAD_LEFT) }}
                       </td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        &#8358;{{number_format(rand(10000,50000),2)}}
+                        {{ $customer->person->first_name.' '.$customer->person->last_name }}
                       </td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-green-600 text-white rounded-full">completed</span> 
+                        {{ isset($customer->person->contact->phone) ?? 'N/A' }}
                       </td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        {{auth()->user()->name}}
+                        {{ count($customer->orders)}}
+                      </td>
+                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        @if($customer->is_active)
+                            <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-green-600 text-white rounded-full">active</span> 
+                        @else 
+                            <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-600 text-white rounded-full">inactive</span> 
+                        @endif
                       </td>
                     </tr class="bg-white border-b">
-
-                @endfor
-
+                @endforeach
               </tbody>
             </table>
           </div>

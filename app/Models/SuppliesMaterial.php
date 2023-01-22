@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Supplier extends Model
+class SuppliesMaterial extends Model
 {
     use HasFactory;
 
@@ -13,11 +13,11 @@ class Supplier extends Model
 
     public function supplies()
     {
-        return $this->hasMany(Supplies::class, 'supplier_id');
+        return $this->belongsTo(Supplies::class, 'supplies_id');
     }
 
-    public function person()
+    public function material()
     {
-        return $this->morphOne(Person::class, 'personable');
-    }
+        return $this->belongsTo(Material::class, 'material_id');
+    }    
 }

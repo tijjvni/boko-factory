@@ -21,6 +21,9 @@
                     @break
                 @case(route('config.users.add.customers'))
                       <livewire:config.users.add-customer />                      
+                    @break  
+                @case(route('config.users.add.suppliers'))
+                      <livewire:config.users.add-suppliers />                      
                     @break                   
                 @default
                 

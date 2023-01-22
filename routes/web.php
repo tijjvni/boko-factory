@@ -54,6 +54,9 @@ Route::middleware([
         Route::get('/config-users-suplliers', function () {
             return view('config');
         })->name('config.users.suppliers');
+        Route::get('/config-users-add-suppliers', function () {
+            return view('config');
+        })->name('config.users.add.suppliers');
         Route::get('/config-users-customers', function () {
             return view('config');
         })->name('config.users.customers');

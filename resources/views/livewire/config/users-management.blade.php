@@ -1,7 +1,7 @@
 <div>
     @switch(request()->url())
         @case (false)
-        
+
         @break
         @default
             <div class="mb-5">
@@ -15,8 +15,5 @@
                     <livewire:config.users.customers />                    
                 </div>
             </div>
-
     @endswitch
-
-
 </div>
