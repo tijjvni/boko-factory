@@ -20,6 +20,13 @@ class DatabaseSeeder extends Seeder
             "password" => bcrypt('password'),
         ]);
         \App\Models\Material::factory(5)->create();
+        \App\Models\Product::factory(5)->create();
+        \App\Models\PaymentMethod::factory()->create([
+            "name" => "cash"
+        ]);
+        \App\Models\PaymentMethod::factory()->create([
+            "name" => "bank"
+        ]);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

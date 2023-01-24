@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('supplies_materials', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity'); 
-            $table->unsignedBigInteger('supplier_id');
+            $table->unsignedBigInteger('supply_id');
+            $table->foreign('supply_id')->references('id')->on('supplies'); 
+            $table->unsignedBigInteger('supplier_id')->nullable();
             $table->foreign('supplier_id')->references('id')->on('suppliers'); 
             $table->unsignedBigInteger('material_id');
             $table->foreign('material_id')->references('id')->on('materials');           

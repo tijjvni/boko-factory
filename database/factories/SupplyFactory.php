@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\PaymentMethod>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Supply>
  */
-class PaymentMethodFactory extends Factory
+class SupplyFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,7 @@ class PaymentMethodFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word
+            //
         ];
     }
 }

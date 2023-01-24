@@ -13,7 +13,7 @@
             <!-- Name -->
             <fieldset class="col-span-6 rounded shadow-md p-5 pt-2">
                 <legend class="m">Product</legend>
-                    <div class="grid grid-cols-2 my-5">
+                    <div class="grid grid-cols-2 my-2.5">
                         <div  class="col-span-1 ">
                             <x-jet-label for="name" value="{{ __('Name') }}" class="mb-2"/>
                             <x-jet-input id="name" type="text" class="col-span-1 block w-full" wire:model="name" placeholder="name" />
@@ -29,6 +29,13 @@
                             </select> 
                             <x-jet-input-error for="type" class="mt-2" />
                         </div>                            
+                    </div>
+                    <div class="grid grid-cols-2 my-2.5">
+                        <div  class="col-span-1 ">
+                            <x-jet-label for="price" value="{{ __('Price') }}" class="mb-2"/>
+                            <x-jet-input id="price" type="text" class="col-span-1 block w-full" wire:model="price" placeholder="price" />
+                            <x-jet-input-error for="price" class="mt-2" />
+                        </div>
                     </div>
 
 

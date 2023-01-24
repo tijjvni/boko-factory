@@ -17,6 +17,7 @@ class MaterialFactory extends Factory
     {
         return [
             "name" => $this->faker->word,
+            "quantity" => $this->faker->randomDigit,
             "type_id" => MaterialType::factory()->create()->id
         ];
     }

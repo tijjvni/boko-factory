@@ -13,7 +13,7 @@ class SuppliesMaterial extends Model
 
     public function supplies()
     {
-        return $this->belongsTo(Supplies::class, 'supplies_id');
+        return $this->belongsTo(Supply::class, 'supply_id');
     }
 
     public function material()

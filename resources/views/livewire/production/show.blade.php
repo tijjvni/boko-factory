@@ -9,7 +9,7 @@
             <h4 class="text-lg font-bold leading-7  sm:truncate sm:text-2xl sm:tracking-tight text-indigo-600">Production: {{ str_pad($production->id, 5, "0", STR_PAD_LEFT) }}</h4>
             <div class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
                 <div class="mt-2 flex items-center text-sm text-gray-500">
-                    <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-indigo-600 text-white rounded">ongoing</span>
+                    <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-indigo-600 text-white rounded">{{$production->status}}</span>
                 </div>
                 <div class="mt-2 flex items-center text-sm text-gray-500">
                     <span class="mr-1.5 flex-shrink-0 text-gray-400 "></span>
@@ -28,20 +28,14 @@
                   <div>
                     <div class="dropdown relative">
                       <button type="button" class="inline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" id="dropdownMenuButton1d" data-bs-toggle="dropdown" aria-expanded="false">                      
-                        Documents &nbsp;
+                        Actions &nbsp;
                         <i class="fa fa-caret-down"></i>
                       </button>
                       <ul class=" dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none"
                         aria-labelledby="dropdownMenuButton1d" >
                         <li>
-                          <a class="  dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 " href="#">Waybill</a
+                          <a class="  dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 " href="#">Add material</a
                           >
-                        </li>
-                        <li>
-                          <a class=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700  hover:bg-gray-100 " href="#" >Another action</a>
-                        </li>
-                        <li>
-                          <a class=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 " href="#" >Something else here</a>
                         </li>
                         <hr class="h-0 my-2 border border-solid border-t-0 border-gray-700 opacity-25" />
                         <li>
@@ -54,9 +48,13 @@
 
             </span>
 
-            <span class="ml-3 sm:block">
-                <x-button></x-button>
-            </span>
+            @if($production->status == 'ongoing')
+                <span class="ml-3 sm:block">
+                    <span onclick="Livewire.emit('openModal', 'production.close-production')">
+                        <x-button value="Close"/>
+                    </span>
+                </span>
+            @endif
 
         </div>
     </div>

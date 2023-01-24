@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Supplies extends Model
+class Supply extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $table = 'supplies';
 
     public function supplier()
     {
@@ -18,7 +19,9 @@ class Supplies extends Model
 
     public function materials()
     {
-        return $this->hasMany(SuppliesMaterial::class, 'supplies_id');
+        return $this->hasMany(SuppliesMaterial::class, 'supply_id');
     }
 
+
 }
+

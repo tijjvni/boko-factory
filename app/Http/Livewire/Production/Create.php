@@ -48,6 +48,10 @@ class Create extends Component
                 if(!isset($material['qty']) || $material['qty'] < 1){
                     $this->addError('materials.'.$key.'.qty', 'Please add material quantity');
                 }
+
+                if(Material::find($material['material'])->quantity < $material['qty']){
+                    $this->addError('materials.'.$key.'.qty', 'Material quantity is morethan available quantity');                    
+                }
             }
 
             if(!$this->startNow){

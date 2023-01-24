@@ -13,7 +13,9 @@ class OngoingProductions extends Component
 
     public function mount()
     {
-        $this->productions = Production::where('status','ongoing')->get();
+        $productions = Production::where('status','ongoing')->get();
+        // dd($productions);
+        $this->productions = $productions;
     }
 
     public function render()

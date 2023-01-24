@@ -16,6 +16,8 @@ class Show extends Component
     {
         $production = Production::find(request()->route('production'));
         $this->production = $production;
+
+       request()->session()->put('production',$production->id);
     }
 
 
