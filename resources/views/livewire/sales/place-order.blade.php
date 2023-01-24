@@ -1,6 +1,6 @@
 <div class="p-5">
      
-    <x-jet-form-section submit="receiveSupply">
+    <x-jet-form-section submit="placeOrder">
         <x-slot name="title">
             {{ __('Place Order ') }}
         </x-slot>

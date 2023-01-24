@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('customer_id');            
+            $table->unsignedBigInteger('user_id');            
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('customer_id')->nullable();            
             $table->foreign('customer_id')->references('id')->on('customers');
-            $table->enum('status', ['pending', 'processing', 'cancelled','returned', 'completed']);
-            $table->unsignedBigInteger('payment_method')->nullable();                        
+            $table->enum('status', ['pending', 'processing', 'cancelled','returned', 'completed'])->default('pending');
+            $table->unsignedBigInteger('payment_method')->nullable();             
             $table->foreign('payment_method')->references('id')->on('payment_methods');
             $table->integer('amount')->default(0);
             $table->timestamps();

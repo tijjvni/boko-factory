@@ -45,41 +45,39 @@ class ReceiveSupply extends ModalComponent
                 if(!isset($material['supplierCheck']) && !isset($material['supplier']) ){
                     $this->addError('materials.'.$key.'.supplier', 'Please add supplier');
                 }
+            }
 
-                if($this->getErrorBag()->isEmpty()){
-                    
-                    $supply = new Supply;
-                    $supply->user_id = auth()->id();
-                    $supply->save();
-
-
-                    foreach ($this->materials as $key => $material) {
-                        $supply->materials()->create([
-                            'supplier_id' => $material['supplier'] ?? null,
-                            'material_id' => $material['material'],
-                            'quantity' => $material['qty'],
-                        ]);
-
-                        $updateMaterial = Material::find($material['material']);
-                        $updateMaterial->quantity = ($updateMaterial->quantity + $material['qty']);
-                        $updateMaterial->save();
-                    }
+            if($this->getErrorBag()->isEmpty()){
+                
+                $supply = new Supply;
+                $supply->user_id = auth()->id();
+                $supply->save();
 
 
+                foreach ($this->materials as $key => $material) {
+                    $supply->materials()->create([
+                        'supplier_id' => $material['supplier'] ?? null,
+                        'material_id' => $material['material'],
+                        'quantity' => $material['qty'],
+                    ]);
 
-                    $this->flash('success', 'Success', [
-                    'position' => 'center',
-                    'timer' => '5000',
-                    'toast' => true,
-                    'timerProgressBar' => true,
-                    'text' => 'Supply received successfully.',
-                    ]);                  
-
-                    return redirect()->to(route('store'));
+                    $updateMaterial = Material::find($material['material']);
+                    $updateMaterial->quantity = ($updateMaterial->quantity + $material['qty']);
+                    $updateMaterial->save();
                 }
 
 
+                $this->flash('success', 'Success', [
+                'position' => 'center',
+                'timer' => '5000',
+                'toast' => true,
+                'timerProgressBar' => true,
+                'text' => 'Supply received successfully.',
+                ]);                  
+
+                return redirect()->to(route('store'));
             }
+
 
         }else {
             $this->alert('error', 'Error', [
