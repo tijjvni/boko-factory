@@ -22,14 +22,14 @@ Route::middleware([
     })->name('sales');
     Route::get('/sales/orders', function () {
         return view('sales');
-    })->name('sales.orders'); 
+    })->name('sales.orders');    
     Route::get('/sales/orders/{order}', function () {
         return view('sales');
     })->name('sales.orders.show');
 
     Route::prefix('/production')->group(function(){
         Route::get('/',function(){
-            return view('production');
+            return view('production');  
         })->name('production');
         Route::get('/add', function () {
             return view('production');
