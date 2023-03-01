@@ -123,7 +123,11 @@ return [
 
     'key' => env('APP_KEY'),
 
-    'cipher' => 'AES-256-CBC',
+    'cipher' => 'AES-256-CBC', 
+    'documents' => [
+        'storage' => env('DOCUMENT_PATH', '/docs'),
+    ],    
+    
 
     /*
     |--------------------------------------------------------------------------

@@ -20,6 +20,12 @@ Route::middleware([
     Route::get('/sales', function () {
         return view('sales');
     })->name('sales');
+    Route::get('/sales/orders', function () {
+        return view('sales');
+    })->name('sales.orders');
+    Route::get('/sales/orders/{order}', function () {
+        return view('sales');
+    })->name('sales.orders.show');
 
     Route::prefix('/production')->group(function(){
         Route::get('/',function(){

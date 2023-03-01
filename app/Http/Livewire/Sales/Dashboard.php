@@ -26,6 +26,12 @@ class Dashboard extends Component
         $this->ordersPending = Order::whereStatus('pending')->count();
     }
 
+
+    public function placeOrder()
+    {
+         $this->emit('openModal', 'sales.place-order');       
+    }
+
     public function render()
     {
         return view('livewire.sales.dashboard');

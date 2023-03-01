@@ -27,9 +27,10 @@
                 @forelse($orders as $key => $order)
                     <tr class="bg-white border-b">
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$key+1}}</td>
-                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        <!-- <a href="/production/1"></a> -->
-                        ORD{{ str_pad($order->id, 5, "0", STR_PAD_LEFT) }}
+                      <td class="text-sm text-indigo-600 font-light px-6 py-4 whitespace-nowrap">
+                        <a href="{{ route('sales.orders.show', ['order' => $order->id])}}">
+                          ORD{{ str_pad($order->id, 5, "0", STR_PAD_LEFT) }}                        
+                        </a>
                       </td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         &#8358;{{number_format($order->amount,2)}}

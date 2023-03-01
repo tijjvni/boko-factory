@@ -10,6 +10,8 @@ use App\Models\Supply;
 use App\Models\Supplier;
 use App\Models\Material;
 
+use PDF;
+
 class ReceiveSupply extends ModalComponent
 {
     use LivewireAlert;
@@ -29,6 +31,9 @@ class ReceiveSupply extends ModalComponent
 
     public function receiveSupply()
     {
+
+        // $invoice->stream();
+        return $invoice->stream();
 
         $this->resetErrorBag();
         $materials = $this->materials;
@@ -88,6 +93,7 @@ class ReceiveSupply extends ModalComponent
             'text' => 'Please add supply materials',
             ]);            
         }
+
 
     }
 

@@ -17,8 +17,13 @@
         </x-dashboard-stat-card>
     </div>
     <span class="sm:block">
-        <span onclick="Livewire.emit('openModal', 'sales.place-order')">
-            <x-button value="Place order"/>
+        <span wire:click="placeOrder">
+            <span wire:target="placeOrder" wire:loading >
+                <x-button value="Loading..."/>
+            </span>
+            <span wire:target="placeOrder" wire:loading.remove >
+                <x-button value="Place order"/>
+            </span>
         </span>
     </span>    
 
