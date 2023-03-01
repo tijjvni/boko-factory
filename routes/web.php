@@ -22,7 +22,7 @@ Route::middleware([
     })->name('sales');
     Route::get('/sales/orders', function () {
         return view('sales');
-    })->name('sales.orders');
+    })->name('sales.orders'); 
     Route::get('/sales/orders/{order}', function () {
         return view('sales');
     })->name('sales.orders.show');
